@@ -9,11 +9,9 @@ public class ParkGirl{
 
   private void printPrice(){
     System.out.println(" Price option: \n" +
-                        " 1 hour is 10 kr \n" +
-                        " 4 hours is 40 kr \n" +
-                        " 5-24 hours is 50 kr \n" +
-                        " 2 days is 100 kr \n" +
-                        " 2 weeks is 700 kr ");
+                        " 10 kr/hour up to 5 hours \n" +
+                        " 50 kr/day \n" +
+                        " 350 kr/week \n ");
   }
 
   private void printVacancies(){
@@ -29,3 +27,4 @@ public class ParkGirl{
 public static void main(String[] args) {}
 
 }
+
