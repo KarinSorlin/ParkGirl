@@ -68,9 +68,26 @@ public class ParkGirl{
         if (option.equals("2")) {
           System.out.println("Please enter your car number to pay");
           //mer kod här
-          System.out.println("How long have you been parked? 1. Hours or 2. Days?"
-                  + "To Exit to Startpage, enter \"0\" and press Enter.");
+          System.out.println("How long have you been parked? 1. Hours, 2. Days or 3. Weeks? \n" +
+                      "To Exit to Startpage, enter \"0\" and press Enter.");
+
+          /*mer kod här
+          if (hours =< 5) {
+            price = 50;
+            price += (hours - 50) % 1;
+          } else if (hours < 24 && hours > 5) {
+            price = 50;
+            price += (hours - 5) * 1;
+          } else {
+            price = hours * 5;
+          }
+          System.out.println("Hours: " + hours + " Price: " + price); */
+
           //Massa mer kod här
+
+          System.out.println("Which payment method would you like to use? \n" +
+                      "1. Card Payments. or 2. Invoice?");
+          //mer kod här
         } else if (option.equals("3")) {
           break;
         }
