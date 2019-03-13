@@ -3,6 +3,33 @@ import java.util.Scanner;
 
 public class ParkGirl{
 
+  public ParkGirl(){
+    CheckedCar cc = new CheckedCar("ABC124");
+    checkedCars.add(cc);
+    cc = new CheckedCar("ABC125");
+    checkedCars.add(cc);
+    cc = new CheckedCar("ABC126");
+    checkedCars.add(cc);
+    cc = new CheckedCar("ABC127");
+    checkedCars.add(cc);
+    cc = new CheckedCar("ABC128");
+    checkedCars.add(cc);
+    cc = new CheckedCar("ABC129");
+    checkedCars.add(cc);
+    cc = new CheckedCar("ABB124");
+    checkedCars.add(cc);
+    cc = new CheckedCar("ABB125");
+    checkedCars.add(cc);
+    cc = new CheckedCar("ABB126");
+    checkedCars.add(cc);
+    cc = new CheckedCar("ABB127");
+    checkedCars.add(cc);
+    cc = new CheckedCar("ABB128");
+    checkedCars.add(cc);
+    cc = new CheckedCar("ABB129");
+    checkedCars.add(cc);
+  }
+
   private ArrayList<CheckedCar> checkedCars = new ArrayList<>();
 
   private void printWelcome(){
