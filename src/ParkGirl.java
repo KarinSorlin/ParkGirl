@@ -67,8 +67,6 @@ public class ParkGirl{
 
 
           if (registrationError) {
-            System.out.println("You need to enter a valid Registration number, A-Z and 0-9. Registration number must be " +
-
             System.out.println("You need to enter a valid registration number, A-Z and 0-9. Car number must be " +
                     "of 2-7 characters and/or digits. Please try again or enter \"0\" to Exit to Startpage.");
           } else {
@@ -95,8 +93,6 @@ public class ParkGirl{
         }
 
         if (option.equals("2")) {
-          System.out.println("Please enter your Registration number to pay");
-
           System.out.println("Please enter your registration number to pay");
           //mer kod här
           System.out.println("How long have you been parked? 1. Hours, 2. Days or 3. Weeks? \n" +
