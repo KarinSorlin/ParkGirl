@@ -92,14 +92,46 @@ public class ParkGirl{
           break;
         }
 
-        if (option.equals("2")) {
-          System.out.println("Please enter your registration number to pay");
-          //mer kod här
+        while (option.equals("2")) {
+
+          if (registrationError) {
+            System.out.println("You need to enter a valid registration number, A-Z and 0-9. Car number must be " +
+                    "of 2-7 characters and/or digits. Please try again or enter \"0\" to Exit to Startpage.");
+          } else {
+            System.out.println("Please enter your Registration number to pay.");
+          }
+          String registrationNumber = scan.nextLine();
+          registrationNumber = registrationNumber.replace(" ", "").toUpperCase();
+
+          if (registrationNumber.equals("0"))
+            break;
+
+          if (!registrationNumber.matches("^[A-Z0-9]{2,7}$")) {
+            registrationError = true;
+            continue;
+          }
+
           System.out.println("How long have you been parked? 1. Hours, 2. Days or 3. Weeks? \n" +
                       "To Exit to Startpage, enter \"0\" and press Enter.");
 
           System.out.println("Please enter your option:");
+          scan.nextLine();
 
+          if (option.equals("1")){
+            System.out.println("Please enter how many hours you've been parked");
+            scan.nextLine();
+          }
+          else if (option.equals("2")){
+              System.out.println("Please enter how many days you've been parked");
+              scan.nextLine();
+            }
+          else if (option.equals("3")){
+              System.out.println("Please enter how many weeks you've been parked");
+              scan.nextLine();
+            }
+          else if (option.equals("0")) {
+            break;
+          }
           /*mer kod här
           if (hours =< 5) {
             price = 50;
@@ -118,22 +150,23 @@ public class ParkGirl{
                       "1. Card Payment. or 2. Invoice?");
 
           System.out.println("Please enter your option:");
+          scan.nextLine();
 
           if (option.equals("1")){
             System.out.println("Please enter your card number");
+            //mer kod
           }
 
           if (option.equals("2")){
             System.out.println("Thank you for your parking, an invoice will be sent to your car address! " +
             "Days: x , Total: x SEK Have a nice day and welcome back!");
-          } else{
-            System.out.println("Wrong input, please try again.");
           }
-            break;
-          //mer kod här
-        } else if (option.equals("3")) {
           break;
+          } // Option 2
+
+        while (option.equals("3")) {
+                        System.exit(0);
         }
-      }
-    }
+      } // while print menu
+    } //print menu metod
   } //class
