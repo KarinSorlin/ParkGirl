@@ -56,7 +56,6 @@ public class ParkGirl{
         System.out.println("Please enter your option:");
 
         String option = scan.nextLine();
-
         Boolean registrationError = false;
         while (option.equals("1")) {
           if (checkedCars.size() >= 15) {
@@ -115,23 +114,26 @@ public class ParkGirl{
                       "To Exit to Startpage, enter \"0\" and press Enter.");
 
           System.out.println("Please enter your option:");
-          scan.nextLine();
+          //scan.nextLine();
+          String checkout = scan.nextLine();
 
-          if (option.equals("1")){
+          if (checkout.equals("1")){
             System.out.println("Please enter how many hours you've been parked");
             scan.nextLine();
           }
-          else if (option.equals("2")){
+          else if (checkout.equals("2")){
               System.out.println("Please enter how many days you've been parked");
               scan.nextLine();
             }
-          else if (option.equals("3")){
+          else if (checkout.equals("3")){
               System.out.println("Please enter how many weeks you've been parked");
               scan.nextLine();
             }
-          else if (option.equals("0")) {
+          else if (checkout.equals("0")) {
             break;
           }
+
+
           /*mer kod här
           if (hours =< 5) {
             price = 50;
@@ -150,14 +152,14 @@ public class ParkGirl{
                       "1. Card Payment. or 2. Invoice?");
 
           System.out.println("Please enter your option:");
-          scan.nextLine();
-
-          if (option.equals("1")){
+          //scan.nextLine();
+          String payment = scan.nextLine();
+          if (payment.equals("1")){
             System.out.println("Please enter your card number");
+            scan.nextLine();
             //mer kod
           }
-
-          if (option.equals("2")){
+          else if (payment.equals("2")){
             System.out.println("Thank you for your parking, an invoice will be sent to your car address! " +
             "Days: x , Total: x SEK Have a nice day and welcome back!");
           }
