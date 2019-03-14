@@ -89,7 +89,7 @@ public class ParkGirl{
           System.out.println("Thank you, your car " + registrationNumber + " is now checked in.");
 
           break;
-        }
+        } // whule option 1
 
         while (option.equals("2")) {
 
@@ -149,7 +149,8 @@ public class ParkGirl{
           //Massa mer kod här
 
           System.out.println("Which payment method would you like to use? \n" +
-                      "1. Card Payment. or 2. Invoice?");
+                      "1. Card Payment. or 2. Invoice? \n" +
+                      "To Exit to Startpage, enter \"0\" and press Enter.");
 
           System.out.println("Please enter your option:");
           //scan.nextLine();
@@ -163,12 +164,14 @@ public class ParkGirl{
             System.out.println("Thank you for your parking, an invoice will be sent to your car address! " +
             "Days: x , Total: x SEK Have a nice day and welcome back!");
           }
-          break;
-          } // Option 2
-
+          else if (payment.equals("0")) {
+            break;
+          }
+        } //while option 2
         while (option.equals("3")) {
                         System.exit(0);
-        }
+                      }
+
       } // while print menu
     } //print menu metod
   } //class
