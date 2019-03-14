@@ -67,11 +67,11 @@ public class ParkGirl{
 
 
           if (registrationError) {
-            System.out.println("You need to enter a valid car number, A-Z and 0-9. Car number must be " +
+            System.out.println("You need to enter a valid Registration number, A-Z and 0-9. Registration number must be " +
                     "of 2-7 characters and/or digits. Please try again or enter \"0\" to Exit to Startpage.");
           } else {
-            System.out.println("Please enter a valid registration number, A-Z and 0-9."
-                    + "Car number must be of 2-7 characters and/or digits.");
+            System.out.println("Please enter a valid Registration number, A-Z and 0-9."
+                    + "Registration number must be of 2-7 characters and/or digits.");
           }
           String registrationNumber = scan.nextLine();
           registrationNumber = registrationNumber.replace(" ", "").toUpperCase();
@@ -93,10 +93,12 @@ public class ParkGirl{
         }
 
         if (option.equals("2")) {
-          System.out.println("Please enter your car number to pay");
-          //mer kod här
+          System.out.println("Please enter your Registration number to pay");
+
           System.out.println("How long have you been parked? 1. Hours, 2. Days or 3. Weeks? \n" +
                       "To Exit to Startpage, enter \"0\" and press Enter.");
+
+          System.out.println("Please enter your option:");
 
           /*mer kod här
           if (hours =< 5) {
@@ -113,12 +115,25 @@ public class ParkGirl{
           //Massa mer kod här
 
           System.out.println("Which payment method would you like to use? \n" +
-                      "1. Card Payments. or 2. Invoice?");
+                      "1. Card Payment. or 2. Invoice?");
+
+          System.out.println("Please enter your option:");
+
+          if (option.equals("1")){
+            System.out.println("Please enter your card number");
+          }
+
+          if (option.equals("2")){
+            System.out.println("Thank you for your parking, an invoice will be sent to your car address! " +
+            "Days: x , Total: x SEK Have a nice day and welcome back!");
+          } else{
+            System.out.println("Wrong input, please try again.");
+          }
+            break;
           //mer kod här
         } else if (option.equals("3")) {
           break;
         }
-
       }
     }
   } //class
