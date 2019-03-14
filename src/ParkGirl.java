@@ -32,12 +32,12 @@ public class ParkGirl{
 
   private ArrayList<CheckedCar> checkedCars = new ArrayList<>();
 
-  private void printWelcome(){
+  public void printWelcome(){
     System.out.println(" Welcome to ParkGirl garage! \n" +
-                        "Our opening hours are 00.00-24.00, all week Monday to Sunday");
+                        " Our opening hours are 00.00-24.00, all week Monday to Sunday");
   }
 
-  private void printPrice(){
+  public void printPrice(){
     System.out.println(" Price option: \n" +
                         " 10 kr/hour up to 5 hours \n" +
                         " 50 kr/day \n" +
@@ -67,7 +67,7 @@ public class ParkGirl{
 
 
           if (registrationError) {
-            System.out.println("You need to enter a valid car number, A-Z and 0-9. Car number must be " +
+            System.out.println("You need to enter a valid registration number, A-Z and 0-9. Car number must be " +
                     "of 2-7 characters and/or digits. Please try again or enter \"0\" to Exit to Startpage.");
           } else {
             System.out.println("Please enter a valid registration number, A-Z and 0-9."
@@ -93,7 +93,7 @@ public class ParkGirl{
         }
 
         if (option.equals("2")) {
-          System.out.println("Please enter your car number to pay");
+          System.out.println("Please enter your registration number to pay");
           //mer kod här
           System.out.println("How long have you been parked? 1. Hours, 2. Days or 3. Weeks? \n" +
                       "To Exit to Startpage, enter \"0\" and press Enter.");
