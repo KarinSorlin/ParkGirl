@@ -102,7 +102,7 @@ public class ParkGirl{
 
           if (registrationError) {
             System.out.println("You need to enter a valid registration number, A-Z and 0-9. Car number must be " +
-                    "of 2-7 characters and/or digits. Please try again or enter \"0\" to Exit to Startpage.");
+                    "of 2-7 characters and/or digits.\n" + "Please try again or enter \"0\" to Exit to Startpage.");
           } else {
             System.out.println("Please enter a valid Registration number, A-Z and 0-9."
                     + "Registration number must be of 2-7 characters and/or digits.");
@@ -132,8 +132,8 @@ public class ParkGirl{
             break;
           }
           if (registrationError) {
-            System.out.println("You need to enter a valid registration number, A-Z and 0-9. Car number must be " +
-                    "of 2-7 characters and/or digits. Please try again or enter \"0\" to Exit to Startpage.");
+            System.out.println("You need to enter a valid registration number, A-Z and 0-9. Registration number must be " +
+                    "of 2-7 characters and/or digits. \n" + "Please try again or enter \"0\" to Exit to Startpage.");
           } else {
             System.out.println("Please enter your Registration number to pay.");
           }
@@ -202,14 +202,14 @@ public class ParkGirl{
             }
             if(!cardNr.matches("[0-9]{10}")){
               System.out.println("The card number you entered is invalid, use only numbers between 0-9 an a maximum of" +
-                      " 10 digits. Please try again or press \"0\" to  Exit to Startpage.");
+                      " 10 digits. \n" + "Please try again or press \"0\" to  Exit to Startpage.");
               continue;
             }
             Card card = getCardFromCards(cardNr);
 
             if(card == null){
               System.out.println("The card number you entered is invalid, use only numbers between 0-9 and a maximum of" +
-                      " 10 digits. Please try again or press \"0\"to  Exit to Startpage.");
+                      " 10 digits. \n" + " Please try again or press \"0\"to  Exit to Startpage.");
               continue;
             }
             if(card.Blocked){
@@ -220,6 +220,9 @@ public class ParkGirl{
               System.out.println("Denied payment, please enter another card or enter \"0\" to Exit to Startpage.");
               continue;
             }
+            else if (card.equals("0")) {
+              break;
+            }
 
             card.Balance -= price;
             removeCarFromGarage(registrationNumber);
@@ -229,7 +232,9 @@ public class ParkGirl{
             removeCarFromGarage(registrationNumber);
             printInvoice(price, hours, days);
           }
-
+          else if (payment.equals("0")) {
+            break;
+          }
         } //while option 2
 
         while (option.equals("3")) {
@@ -240,20 +245,26 @@ public class ParkGirl{
     } //print menu method
 
   private void printReceipt(int price, int hours, int days) {
-    if(hours != 0)
+    if(hours != 0) {
       System.out.println("Thank you for your parking!\n Receipt: \nHours: "+hours+" \nTotal: " + price + " SEK" +
               " \nHave a nice day and welcome back!");
-    else
+            }
+    else {
       System.out.println("Thank you for your parking!\n Receipt: \nDays: "+days+" \nTotal: " + price + " SEK" +
               " \nHave a nice day and welcome back!");
+          }
+
   }
   private void printInvoice(int price, int hours, int days) {
-    if(hours != 0)
+    if(hours != 0) {
       System.out.println("Thank you for your parking, an invoice will be sent to your car address! \n" +
               "Invoice: \nHours: " + hours + " \nTotal: " + price + " SEK \nHave a nice day and welcome back!");
-    else
+            }
+    else {
       System.out.println("Thank you for your parking, an invoice will be sent to your car address! \n" +
               "Invoice: \nDays: " + days + " \nTotal: " + price + " SEK \nHave a nice day and welcome back!");
+            }
+
   }
 
   private void removeCarFromGarage(String registrationNumber) {
