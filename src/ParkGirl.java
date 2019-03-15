@@ -118,6 +118,12 @@ public class ParkGirl{
             continue;
           }
 
+          if(carExistsInGarage(registrationNumber)){
+            registrationError = true;
+            System.out.println("The Car is already checked in.");
+            continue;
+          }
+
           CheckedCar cc = new CheckedCar(registrationNumber);
           checkedCars.add(cc);
 
@@ -131,6 +137,7 @@ public class ParkGirl{
             System.out.println("Your car is not registered, please register your car.\n");
             break;
           }
+
           if (registrationError) {
             System.out.println("You need to enter a valid registration number, A-Z and 0-9. Car number must be " +
                     "of 2-7 characters and/or digits. Please try again or enter \"0\" to Exit to Startpage.");
@@ -148,49 +155,77 @@ public class ParkGirl{
             continue;
           }
 
-          System.out.println("How long have you been parked? 1. Hours or 2. Days? \n" +
-                      "To Exit to Startpage, enter \"0\" and press Enter.");
-          System.out.println("Please enter your option:");
-
-          String checkout = scan.nextLine();
-
-          if (checkout.equals("1")){
-            System.out.println("Please enter how many hours you've been parked:");
-            scan.nextLine();
+          if(!carExistsInGarage(registrationNumber)){
+            registrationError = true;
+            System.out.println("The car is not checked into the garage.");
+            continue;
           }
-          else if (checkout.equals("2")){
-              System.out.println("Please enter how many days you've been parked:");
-              scan.nextLine();
+          String checkout;
+          while(true){
+            System.out.println("How long have you been parked? 1. Hours or 2. Days? \n" +
+                        "To Exit to Startpage, enter \"0\" and press Enter.");
+            System.out.println("Please enter your option:");
+
+            checkout = scan.nextLine();
+            if(checkout.matches("[120]")){
+              break;
             }
-          else if (checkout.equals("0")) {
+
+          }
+          int hours= 0;
+          int days = 0;
+
+          while (checkout.equals("1")){
+            System.out.println("Please enter how many hours you've been parked:");
+
+            try {
+              String tmp = scan.nextLine();
+              hours = Integer.parseInt(tmp);
+              if(hours < 1){
+                System.out.println("Invalid parameter, number of hours can only be a positive amount. Please try again, or press \"0\" to Exit to Startpage.");
+                continue;
+              }
+              break;
+            } catch (Exception e){
+              System.out.println("Invalid hours.");
+            }
+
+          }
+          while (checkout.equals("2")) {
+            System.out.println("Please enter how many days you've been parked:");
+            try {
+              String tmp = scan.nextLine();
+              days = Integer.parseInt(tmp);
+              if(days < 1){
+                System.out.println("Invalid parameter, number of days can only be a positive amount. Please try again, or press \"0\" to Exit to Startpage.");
+                continue;
+              }
+              break;
+            } catch (Exception e) {
+              System.out.println("Invalid days.");
+            }
+          }
+          if (checkout.equals("0")) {
             break;
           }
 
+          int price;
 
-          /*mer kod här
-          if (hours =< 5) {
-            price = 50;
-            price += (hours - 50) % 1;
-          } else if (hours < 24 && hours > 5) {
-            price = 50;
-            price += (hours - 5) * 1;
-          } else {
-            price = hours * 5;
+          if(hours > 5){
+            days = hours/24;
+            if(hours % 24 != 0)
+              days++;
+            hours = 0;
           }
-          System.out.println("Hours: " + hours + " Price: " + price); */
+          price = hours*10+days*50;
 
-          //Massa mer kod här
-          int hours= 0; //TODO: se till att de faktiska timmarna står här. Ska vara 0 om kunde skrivit dagar..
-          int days = 1; //TODO: se till att de faktiska dagarna står här. Ska vara 0 om kunde skrivit timmar..
-          int price = 50; //TODO: Ändra till priset som är uträknat
-          String regNr = "ABC129"; //TODO: Ändra till det riktiga regnummret
+          System.out.println("The total price for your parking: "+ price);
 
           System.out.println("Which payment method would you like to use? \n" +
                       "1. Card Payment or 2. Invoice? \n" +
                       "To Exit to Startpage, enter \"0\" and press Enter.");
 
           System.out.println("Please enter your option:");
-          //scan.nextLine();
           String payment = scan.nextLine();
           while(payment.equals("1")){
             System.out.println("Please enter your card number:");
@@ -264,6 +299,14 @@ public class ParkGirl{
         return;
       }
     }
+  }
+  private Boolean carExistsInGarage(String registrationNumber){
+    for (CheckedCar car: checkedCars
+         ) {
+      if(car.RegistrationNumber.equals(registrationNumber))
+        return true;
+    }
+    return false;
   }
 
   private Card getCardFromCards(String cardNr) {
