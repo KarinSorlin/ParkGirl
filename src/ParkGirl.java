@@ -228,15 +228,15 @@ public class ParkGirl{
 
               if (card == null) {
                 System.out.println("The card number you entered is invalid, use only numbers between 0-9 and a maximum of" +
-                        " 10 digits. \n" + " Please try again or enter \"0\" to  previous page.");
+                        " 10 digits.");
                 continue;
               }
               if (card.Blocked) {
-                System.out.println("The card you're using is blocked, please enter another card or enter \"0\" to previous page.");
+                System.out.println("The card you're using is blocked.");
                 continue;
               }
               if (card.Balance < price) {
-                System.out.println("Denied payment, please enter another card or enter \"0\" to previous page.");
+                System.out.println("Denied payment.");
                 continue;
               } else if (card.equals("0")) {
                 break;
@@ -258,9 +258,13 @@ public class ParkGirl{
               break;
             }
 
-            if(goBackToPrevious || !payment.matches("[120]"))
+            if(goBackToPrevious)
               continue;
 
+            if(!payment.matches("[120]")){
+               System.out.println("Invalid choice, please try again.");
+               continue;
+            }
             break;
           }
           if(exitPaymentLoop)
