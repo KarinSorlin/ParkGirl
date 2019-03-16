@@ -199,7 +199,7 @@ public class ParkGirl{
             break;
 
           int price = calculatePrice(hours, days);
-          Boolean paymentDone = false;
+          Boolean exitPaymentLoop = false;
           while(true) {
             System.out.println("The total price for your parking: " + price + " SEK");
 
@@ -245,15 +245,16 @@ public class ParkGirl{
               card.Balance -= price;
               removeCarFromGarage(registrationNumber);
               printReceipt(price, hours, days);
-              paymentDone = true;
+              exitPaymentLoop = true;
               break;
             }
             if (payment.equals("2")) {
               removeCarFromGarage(registrationNumber);
               printInvoice(price, hours, days);
-              paymentDone = true;
+              exitPaymentLoop = true;
               break;
             } else if (payment.equals("0")) {
+              exitPaymentLoop = true;
               break;
             }
 
@@ -262,7 +263,7 @@ public class ParkGirl{
 
             break;
           }
-          if(paymentDone)
+          if(exitPaymentLoop)
             break;
         } //while option 2
 
@@ -332,7 +333,6 @@ public class ParkGirl{
       System.out.println("\n******* RECEIPT ******* \nThank you for your parking! \nDays: "+days+" \nTotal: " + price + " SEK" +
               " \nHave a nice day and welcome back!\n \n");
     }
-    // TODO: EFTER KVITTO LOPPAR TILL "PLEASE ENTER CARD NUMBER"
   }
   private void printInvoice(int price, int hours, int days) {
     if(hours != 0) {
@@ -343,7 +343,6 @@ public class ParkGirl{
       System.out.println("\n********* Invoice *********\nThank you for your parking, \nan invoice will be sent to your car address!" +
               "\nDays: " + days + " \nTotal: " + price + " SEK \nHave a nice day and welcome back!\n \n");
     }
-    // TODO: EFTER FAKTURA LOPPAR TILL "Please enter your registration number to pay, or enter "0" to Exit to Startpage."
   }
 
   private void removeCarFromGarage(String registrationNumber) {
