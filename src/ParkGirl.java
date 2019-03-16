@@ -33,7 +33,7 @@ public class ParkGirl{
     checkedCars.add(cc);
     cc = new CheckedCar("ABB129");
     checkedCars.add(cc);
-    /*
+/*
     cc = new CheckedCar("AMM127");
     checkedCars.add(cc);
     cc = new CheckedCar("ALL128");
@@ -86,7 +86,7 @@ public class ParkGirl{
         Boolean registrationError = false;
         while (option.equals("1")) {
           if (checkedCars.size() >= 15) {
-            System.out.println("Parking is full at the moment. We apologise for any inconvenience, please return at a " +
+            System.out.println("There are no parking spots available at the moment. We apologise for any inconvenience, please return at a " +
                     "later date.");
             break;
           }
@@ -126,7 +126,7 @@ public class ParkGirl{
 
         while (option.equals("2")) {
           if (checkedCars.size() == 0) {
-            System.out.println("Your car is not registered, please try again or enter \"0\" to Exit to Startpage.\n");
+            System.out.println("Your car is not registered, please register your car.\n");
             break;
           }
 
@@ -228,22 +228,22 @@ public class ParkGirl{
               }
               if (!cardNr.matches("[0-9]{10}")) {
                 System.out.println("The card number you entered is invalid, use only numbers between 0-9 an a maximum of" +
-                        " 10 digits. \n" + "Please try again or enter \"0\" to  previous page."); //TODO: TRYCKER MAN IN 0, SKA GÅ TILLBAKA EN SIDA
+                        " 10 digits.");
                 continue;
               }
               Card card = getCardFromCards(cardNr);
 
               if (card == null) {
                 System.out.println("The card number you entered is invalid, use only numbers between 0-9 and a maximum of" +
-                        " 10 digits. \n" + " Please try again or enter \"0\" to  previous page."); //TODO: TRYCKER MAN IN 0, SKA GÅ TILLBAKA EN SIDA
+                        " 10 digits. \n" + " Please try again or enter \"0\" to  previous page.");
                 continue;
               }
               if (card.Blocked) {
-                System.out.println("The card you're using is blocked, please enter another card or enter \"0\" to previous page."); //TODO: TRYCKER MAN IN 0, SKA GÅ TILLBAKA EN SIDA
+                System.out.println("The card you're using is blocked, please enter another card or enter \"0\" to previous page.");
                 continue;
               }
               if (card.Balance < price) {
-                System.out.println("Denied payment, please enter another card or enter \"0\" to previous page."); //TODO: TRYCKER MAN IN 0, SKA GÅ TILLBAKA EN SIDA
+                System.out.println("Denied payment, please enter another card or enter \"0\" to previous page.");
                 continue;
               } else if (card.equals("0")) {
                 break;
@@ -264,7 +264,7 @@ public class ParkGirl{
               break;
             }
 
-            if(goBackToPrevious)
+            if(goBackToPrevious || !payment.matches("[120]"))
               continue;
 
             break;
