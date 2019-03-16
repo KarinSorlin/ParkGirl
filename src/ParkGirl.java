@@ -33,13 +33,6 @@ public class ParkGirl{
     checkedCars.add(cc);
     cc = new CheckedCar("ABB129");
     checkedCars.add(cc);
-/*
-    cc = new CheckedCar("AMM127");
-    checkedCars.add(cc);
-    cc = new CheckedCar("ALL128");
-    checkedCars.add(cc);
-    cc = new CheckedCar("APP129");
-    checkedCars.add(cc);*/
   }
 
   private void addCards(){
@@ -214,7 +207,7 @@ public class ParkGirl{
                     "1. Card Payment or 2. Invoice? \n" +
                     "To Exit to Startpage, enter \"0\" and press Enter.");
 
-            System.out.println("Please enter your option:"); //TODO: FELHANTERINGEN LOOPAR TILL "Please enter your registration number to pay, or enter "0" to Exit to Startpage."
+            System.out.println("Please enter your option:");
             String payment = scan.nextLine();
             Boolean goBackToPrevious = false;
             while (payment.equals("1")) {
